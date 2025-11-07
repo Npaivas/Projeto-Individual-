@@ -1,4 +1,4 @@
-    DROP DATABASE IF EXISTS individual;
+DROP DATABASE IF EXISTS individual;
 CREATE DATABASE individual;
 USE individual;
 
