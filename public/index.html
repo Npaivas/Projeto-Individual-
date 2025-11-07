@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/cadastro.css">
-    <script src="./JavaScript/cadastro.js"></script>
+    <script src="./js/cadastro.js"></script>
     <title>Cadastro</title>
 </head>
 
@@ -20,21 +20,24 @@
                         <span>Cadastre-se</span>
                     </div>
                     <label>
-                        <input type="text" id="inp_nome" placeholder="Nome Completo">
+                        <input type="text" id="inp_nome" placeholder="Nome" value="Nicholas">
                     </label> <br>
                     <label>
-                        <input type="date" id="inp_dtNasc" placeholder="Data de Nascimento">
-                    </label> <br>
-                    <label>
-                        <input type="text" id="inp_email" placeholder="Email">
+                        <input type="text" id="inp_email" placeholder="Email" value="seu@email.com">
                     </label><br>
                     <label>
-                        <input type="password" id="inp_senha" placeholder="Senha">
+                        <input type="password" id="inp_senha" placeholder="Senha" value="1234">
                     </label> <br>
+                    
                     <button onclick="cadastrar()">Cadastrar</button>
                 </div>
             </div>
             <div id="div_resultado"></div>
+            <div id="mensagem_erro" ></div>
+            <div id="div_aguardar" class="loading-div">
+                <img src="./assets/img/aguarde-orange.gif" id="loading-gif" />
+            </div>
+
         </div>
     </div>
 </body>
