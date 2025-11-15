@@ -69,14 +69,14 @@ button {
     margin-top: 10px;
 }
 
-.loading-div{
+.aguarde{
     display: none;
     flex-direction: row;
     justify-content: center;
     width: auto;
 }
 
-.loading-div img{
+.aguarde img{
     height: 50px;
 }
 

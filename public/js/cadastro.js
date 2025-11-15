@@ -1,5 +1,4 @@
  /*função de cadastro*/
-
 function cadastrar() {
     // aguardar();
 
@@ -8,19 +7,25 @@ function cadastrar() {
     var nomeVar = inp_nome.value;
     var emailVar = inp_email.value;
     var senhaVar = inp_senha.value;
-
+    var emailFormatado = emailVar.trim().toLowerCase()    
     // Verificando se há algum campo em branco
     if (
         nomeVar == "" ||
-        emailVar == "" ||
+        emailFormatado == "" ||
         senhaVar == "" 
     ) {
-
         alert("Preencha todos os campos corretamente");
-
       //  finalizarAguardar();
-        return false;
-    } else {
+        return ;
+    } else if(!emailFormatado.includes('@')){
+        alert("Está faltando o @")
+        return ;
+    }
+    else if(!emailFormatado.endsWith('.com')){
+            alert("Está faltando .com")
+            return ;
+        }
+     else {
         setInterval(sumirMensagem, 5000);
     }
 
@@ -35,7 +40,7 @@ function cadastrar() {
             // crie um atributo que recebe o valor recuperado aqui
             // Agora vá para o arquivo routes/usuario.js
             nomeServer: nomeVar,
-            emailServer: emailVar,
+            emailServer: emailFormatado,
             senhaServer: senhaVar,
         }),
     })
@@ -43,7 +48,7 @@ function cadastrar() {
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                //cardErro.style.display = "block";
+                div_aguardar.style.display = "block";
 
                 //mensagem_erro.innerHTML =
                     alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
@@ -67,5 +72,5 @@ function cadastrar() {
 }
 
 function sumirMensagem() {
-    cardErro.style.display = "none"
+    div_aguardar.style.display = "none"
 }
