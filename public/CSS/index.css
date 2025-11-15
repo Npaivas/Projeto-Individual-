@@ -1,24 +1,23 @@
 body {
      margin: 0;
      padding: 0;
+     width: 100%;
      height: 100%;
      box-sizing: border-box;
      background-color: #0a0a0a;
-     color: #f5f5f5; 
+     color: #f5f5f5;
+     overflow-x: hidden; 
 }
 
 .header {
      display: flex;
-     position: fixed;
      top: 0;
-     left: 0;
      width: 100%;
      height: 80px;
      padding: 5px;
      align-items: center;
      justify-content: space-between;
      background-color: #000;
-     z-index: 10;
 }
 
 .logo-titulo-container {
@@ -59,16 +58,13 @@ body {
 }
 
 .bloco-video {
-     width: 100%;
+     width: 98%;
      height: 850px;
-     position: relative;
-     margin-top: 80px;
+     margin-top: 0px;
 }
 
 .video-background {
      position: absolute;
-     top: 0;
-     left: 0;
      width: 100%;
      height: 100%;
 }
@@ -77,21 +73,18 @@ body {
      width: 100%;
      height: 100%;
      object-fit: cover;
-     display: block;
 }
 
 .main {
+     display: flex;
      background-color: #0a0a0a;
-     margin-top: 0;
+     margin-top: 100px;
 }
 
 .main h1 {
-     display: flex;
-     justify-content: flex-start;
-     padding-left: 50px;
-     color: #C5A445; 
+     color: #C5A445;
      text-align: center;
-     margin-top: 50px 0;
+     margin-top: 0;
 }
 
 .main p{
@@ -103,16 +96,17 @@ body {
 
 .cronologia {
      position: relative;
-     left: 100px;
-     width: 85%;
+     width: 100%;
      margin: 50px;
      display: flex;
+     justify-content: center;
      align-items: flex-start;
 }
 
-.cards-container {
+.container {
      display: flex;
      gap: 270px;
+     margin-bottom: 100px;
 }
 
 .card {
@@ -172,14 +166,34 @@ body {
      width: 70%;
 }
 
+.geral-marcos{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: flex-end; 
+    gap: 20px;
+    padding: 20px;
+}
+.final{
+     width: 50%;
+     height: 500px;
+     margin-right: 260px;
+     margin-bottom: 300px;
+     box-shadow: 8px 10px 40px #C5A445; 
+}
+.conteudo{
+     display: flex;
+     flex-direction: row;
+     align-items: flex-start;
+     padding: 40px 20px;
+     gap: 30px;
+}
 .Marcos {
-     position: relative;
-     margin-top: 290px;
-     margin-left: 1125px;
-     width: 300px;
+     width: 18%;
      display: flex;
      flex-direction: column;
      align-items: flex-end;
+     margin-right: 40px;
 }
 
 .Marcos-card {

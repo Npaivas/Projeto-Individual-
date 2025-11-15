@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/cadastro.css">
+    <script src="./js/cadastro.js"></script>
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="imagem">
+        </div>
+        <div class="conteudo">
+            <div class="content">
+                <div class="credencial">
+                    <div class="texto">
+                        <span>Cadastre-se</span>
+                    </div>
+                    <label>
+                        <input type="text" id="inp_nome" placeholder="Nome" value="Nicholas">
+                    </label> <br>
+                    <label>
+                        <input type="text" id="inp_email" placeholder="Email" value="seu@email.com">
+                    </label><br>
+                    <label>
+                        <input type="password" id="inp_senha" placeholder="Senha" value="1234">
+                    </label> <br>
+                    
+                    <button onclick="cadastrar()">Cadastrar</button> <br>
+        
+                    <div id="div_aguardar" class="aguarde">
+                        <img src="./assets/img/aguarde-pink2.gif" id="loading-gif" />
+                    </div>
+                    
+                    
+
+                </div>
+            </div>
+            <div id="div_resultado"></div>
+            <div id="mensagem_erro" ></div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>
