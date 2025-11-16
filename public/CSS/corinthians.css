@@ -57,19 +57,14 @@ body {
      margin-left: 15px;
 }
 
-.bloco-video {
-     width: 100%;
-     height: 800px;
-     margin-top: 1px;
-     overflow: hidden;
-     position: relative;
+.bloco-poster {
 }
-.video-background {
+.poster-background {
      width: 100%;
      height: 100%;
 }
 
-.video-background video {
+.poster-background img {
      width: 100%;
      height: 100%;
      object-fit: cover;

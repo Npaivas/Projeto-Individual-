@@ -68,7 +68,7 @@ function cadastrar() {
 //            finalizarAguardar();
         });
 
-    return false;
+    return;
 }
 
 function sumirMensagem() {
