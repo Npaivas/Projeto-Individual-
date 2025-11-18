@@ -1,209 +1,238 @@
-body {
-     margin: 0;
-     padding: 0;
-     width: 100%;
-     height: 100%;
-     box-sizing: border-box;
-     background-color: #0a0a0a;
-     color: #f5f5f5;
-     overflow-x: hidden; 
+/* Reset e configurações gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-color: #0a0a0a;
+    color: #f5f5f5;
+    width: 100%;
+}
+
+/* Header */
 .header {
-     display: flex;
-     top: 0;
-     width: 100%;
-     height: 80px;
-     padding: 5px;
-     align-items: center;
-     justify-content: space-between;
-     background-color: #000;
+    display: flex;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    padding: 5px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000;
+    z-index: 1000;
 }
 
 .logo-titulo-container {
-     display: flex;
-     align-items: center;
-     gap: 15px;
-}
-
-.header img {
-     height: 60px;
-     margin-right: 25px;
-}
-
-.logo-libertadores {
-     height: 60px;
-     margin-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .header h1 {
-     color: #C5A445; 
-     margin: 0;
-
+    margin: 0;
+    color: #C5A445;
 }
 
-.logo-corinthians {
-     width: 150px;
+.header img {
+    height: 60px;
+}
+
+.logo-libertadores img {
+    height: 60px;
+    margin-right: 25px;
+    margin-left: 10px;
+}
+
+.logo-corinthians img{
+    height: 60px;
+    width: auto;
+}
+.logo-flamengo img {
+    height: 60px;
+    width: auto;
+}
+.logo-galo img {
+    height: 60px;
+    width: auto;
+}
+
+.logos-times {
+    display: flex;
+    gap: 20px;
 }
 
 .usuario-icone {
-     height: 100%;
-     display: flex;
-     align-items: center;
-     border-left : 1px solid #C5A445;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    border-left: 1px solid #C5A445;
 }
 
 .usuario-icone img {
-     height: 80%;
-     margin-left: 15px;
+    height: 80%;
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.bloco-poster {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    margin-top: 1px;
+    overflow: hidden;
 }
 
 .poster-background {
-    width: 100%; 
-    height: 800px;
-    background-image: url('../assets/img/corinthians-campeão 1.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.poster-background img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: 1;
 }
 
 .banner {
     position: absolute;
-    bottom: 80px; 
-    left: 80px;
-    color: #C5A445;
-    text-shadow: 2px 2px 5px #000;
-    max-width: 60%;
+    top: 80%;
+    left: 50px;
+    color: white;
     z-index: 2;
+    }
+
+.banner h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.1em;
+    color: #C5A445;
+}
+
+.banner h2 {
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.banner p {
+    font-size: 1.2em;
+    font-weight: 300;
 }
 
 .main {
-     display: flex;
-     background-color: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    background-color: #0a0a0a;
+    width: 100%;
+    padding: 0 20px;
 }
 
 .main h1 {
-     color: #C5A445;
-     margin-top: 50px;
-     margin-left: 50px;
-     font-size: medium;
-}
-
-.main p{
-     margin: 30px 15px 10px;
-     font-size: small;
-     margin-top: 10px;
-     color: #ddd;
+    position: relative;
+    margin-top: 50px;
+    margin-left: 50px;
+    color: #C5A445;
 }
 
 .trajetoria {
-     position: relative;
-     width: 100%;
-     margin: 50px;
-     display: flex;
-     justify-content: center;
-     align-items: flex-start;
+    display: flex;
+    margin: 50px;
+    justify-content: center;
 }
 
 .container {
-     display: flex;
-     gap: 270px;
-     margin-top: 50px;
+    display: flex;
+    margin-top: 50px;
+    gap: 60px;
+    justify-content: center;
 }
 
 .card {
-     background-color: #2a2a2a;
-     width: 350px;
-     height: 350px;
-     border-radius: 15px;
-     display: flex;
-     justify-content: center;
-     align-items: flex-end;
-     box-shadow: 0 4px 8px #000;
-}
-
-.card p{
-     font-size: 15px;
-}
-
-.card-ano {
-     text-align: start;
-     font-size: 17px;
-     color: #C5A445;
-}
-
-.card-1960{    
-     display: flex;
-     justify-content: center;
-     align-items: center;
-}
-
-.card-1970{
-     display: flex;
-     justify-content: center;
-     align-items: center;
-}
-
-.card-1989 {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     
-}
-
-.card-1960 img{
-     border-radius: 15px;
-     width: 70%;
-     height: 150px;
-     box-shadow: 8px 10px 40px #9E7F2E; 
-}
-
-.card-1970 img{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 450px; 
     border-radius: 15px;
-     margin-bottom: 18%;
-     width: 70%;
-     height: 170px;
-     box-shadow: 8px 10px 40px #9E7F2E; 
+    padding: 20px;
+    align-items: center;
+    text-align: center;
+    background-color: #2a2a2a;
+    box-shadow: 8px 10px 40px #C5A445;
 }
 
-.card-1989 img {
-     border-radius: 15px;
-     margin-bottom: 20%;
-     width: 70%;
-     height: 170px;
-     box-shadow: 8px 10px 40px #9E7F2E; 
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+
 }
 
-.geral-marcos{
+.card h3 {
+    margin: 15px 0;
+    color: #C5A445;
+}
+
+.card p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #ddd;
+    line-height: 1.5;
+}
+
+.geral-marcos {
     display: flex;
     width: 100%;
     justify-content: flex-end;
-    align-items: flex-end; 
+    align-items: flex-end;
     gap: 20px;
     padding: 30px;
-    margin-top:10%;
+    margin-top: 10%;
 }
 
-.final{
-     width: 40%;
-     height: 500px;
-     margin-right: 260px;
-     margin-bottom: 300px;
-     border-radius: 18px;
-     overflow: hidden;
-     position: relative;
-     box-shadow: 8px 10px 40px #C5A445;
-     right: 5%;
-     
+.final {
+    width: 40%;
+    height: 500px;
+    margin-right: 260px;
+    margin-bottom: 300px;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 8px 10px 40px #C5A445;
+    right: 5%;
 }
 
-.final img{
-     width: 100%;
-     height: 100%;
-     object-fit: cover;
+.final img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.informacao-final{
+.background-imagem {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    z-index: 1;
+    background-color: #121212;
+    opacity: 0.8;
+}
+
+.informacao-final {
     position: absolute;
     bottom: 25px;
     left: 25px;
@@ -213,141 +242,111 @@ body {
     font-family: Arial;
 }
 
-.background-imagem{
-     position: absolute;
-     bottom: 0;
-     left: 0;
-     width: 100%;
-     height: 25%;
-     z-index: 1;
-     background-color: #121212;
+.informacao-final h2 {
+    margin: 0 0 3%;
+    font-size: 28px;
+    font-weight: 700;
 }
 
-.informacao-final h2{
-     margin: 0;
-     margin-top: 3%;
-     font-size: 28px;
-     font-weight: 700;
-}
-
-.informacao-final span{
+.informacao-final span {
     display: inline-block;
-    background: #7a00f5;
     padding: 6px 14px;
     border-radius: 20px;
-    font-weight: bold;
     margin-bottom: 12px;
     font-size: 14px;
+    font-weight: bold;
+    background: #7a00f5;
 }
 
 .informacao-final p {
-     margin-top: 8px;
-     font-size: 15px;
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.4;
 }
-.conteudo{
-     display: flex;
-     flex-direction: row;
-     align-items: flex-start;
-     padding: 40px 20px;
-     gap: 30px;
-}
+
 .Marcos {
-     width: 18%;
-     display: flex;
-     flex-direction: column;
-     align-items: flex-end;
-     margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 20px;
 }
 
-.Marcos-card{
-     background-color: #1a1a1a;
-     width: 80%;
-     height: 280px;
-     border-radius: 15px;
-     color: #C5A445;
-     display: flex;
-     padding: 15px;
-     flex-direction: column;
-     justify-content: flex-start;
-     box-shadow: 8px 2px 2px #C5A445; 
-     margin: 30px 10px 10px;
+.Marcos-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: 280px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 8px 2px 2px #C5A445;
+    background-color: #1a1a1a;
+    color: #C5A445;
+    position: relative;
+    bottom: 150px;
 }
 
-
-.Marcos-informacao {
-     margin-top: 5px;
-     border-bottom: 1px solid #C5A445;
-     width: 100%;
-}
-
-.Marcos-times {
-     margin-top: 45px;
-     display: flex;
-     justify-content: space-around;
-     align-items: center;
-     text-align: center;
-}
-
-.Marcos-card img {
-     width: 90px;
-     height: 60px;
-     object-fit: contain;
-     border-radius: 15px;
+.Marcos-titulo {
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #C5A445;
+    color: #C5A445;
+    padding-bottom: 5px;
+    text-align: center;
 }
 
 .Marcos-artilheiros{
+    display: flex;
     margin-top: 45px;
-     display: flex;
-     justify-content: space-around;
-     align-items: center;
-     text-align: center;
-     gap: 5px;
-
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
 }
 .Marcos-assistentes {
-     margin-top: 45px;
-     display: flex;
-     justify-content: space-around;
-     align-items: center;
-     text-align: center;
-     gap: 5px;
+    display: flex;
+    margin-top: 45px;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
 }
 
-.Marcos-artilheiros img{
-     width: 65px;
-     height: 65px;
-     object-fit: cover;
-     border-radius: 50%;
-     border: 2px solid #C5A445; 
+.Marcos-artilheiros img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #C5A445;
 }
 .Marcos-assistentes img {
-     width: 65px;
-     height: 65px;
-     object-fit: cover;
-     border-radius: 50%;
-     border: 2px solid #C5A445; 
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #C5A445;
 }
 
 .Marcos-artilheiros p{
-     margin-top: 8px;
-     font-size: 20px;
-     font-weight: bold;
-     color: #C5A445;
-
+    margin-top: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #C5A445;
 }
+
 .Marcos-assistentes p {
-     margin-top: 8px;
-     font-size: 20px;
-     font-weight: bold;
-     color: #C5A445;
+    margin-top: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #C5A445;
 }
 
 .footer {
-    background-color: #000;
-    color: #C5A445; 
     padding: 20px;
+    margin-top: 40px;
     text-align: center;
     font-size: 16px;
-    margin-top: 40px;
+    background-color: #000;
+    color: #C5A445;
+    width: 100%;
 }
- 
