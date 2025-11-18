@@ -7,7 +7,7 @@ function entrar() {
 
     if (emailVar == "" || senhaVar == "") {
         cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        mensagem_erro.innerHTML = "(Não esqueça de preencher nenhum campo)";
         finalizarAguardar();
         return false;
     }
@@ -41,7 +41,7 @@ function entrar() {
                 sessionStorage.ID_USUARIO = json.idUsuario;
 
                 setTimeout(function () {
-                    window.location = "fakeindex.html";
+                    window.location = "index.html";
                 }, 1000); // apenas para exibir o loading
 
             });

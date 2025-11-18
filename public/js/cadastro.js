@@ -7,27 +7,29 @@ function cadastrar() {
     var nomeVar = inp_nome.value;
     var emailVar = inp_email.value;
     var senhaVar = inp_senha.value;
+    var confrmSenhaVar =  inp_confrmSenha.value;
     var emailFormatado = emailVar.trim().toLowerCase()    
     // Verificando se há algum campo em branco
     if (
         nomeVar == "" ||
         emailFormatado == "" ||
-        senhaVar == "" 
+        senhaVar == "" ||
+        confrmSenhaVar == ""
     ) {
         alert("Preencha todos os campos corretamente");
       //  finalizarAguardar();
-        return ;
-    } else if(!emailFormatado.includes('@')){
-        alert("Está faltando o @")
-        return ;
+        return false;
+    } else if(!emailFormatado.includes('@') ||!emailFormatado.includes('.') ){
+        alert("Email/senha incoretos")
+        return false;
+    } else if(confrmSenhaVar != senhaVar){ 
+            alert("confirme a senha corretamente")
+            return false;
     }
-    else if(!emailFormatado.endsWith('.com')){
-            alert("Está faltando .com")
-            return ;
-        }
      else {
         setInterval(sumirMensagem, 5000);
     }
+
 
 
     // Enviando o valor da nova input

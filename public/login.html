@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/login.css">
-    <script src="./js/login.js"></script>
     <title>Login</title>
 </head>
     
@@ -14,24 +13,37 @@
         <div class="imagem">
         </div>
         <div class="conteudo">
-            <div class="content">
-                <div class="credencial">
-                    <div class="texto">
-                        <span>Login</span>
-                    </div>
-                    <label>
-                        <input type="text" id="inp_login" placeholder="Email"> <br>
-                    </label> <br>
-
-                    <label>
-                        <input type="password" id="inp_senha" placeholder="Senha"> <br>
-                    </label> <br>
-                    <button onclick="entrar()">Entrar</button>
+            <div class="credencial">
+                <div class="texto">
+                    <span>Login</span>
                 </div>
+                
+                <div id="div_aguardar" style="display: none;">
+                    <img src="assets/img/aguarde-pink2.gif" alt="">
+                </div>
+                
+                <div id="cardErro" style="display: none; color: red; margin: 10px 0;">
+                    <span id="mensagem_erro"></span>
+                </div>
+
+                <label>
+                    <input type="text" id="inp_login" placeholder="Email"> <br>
+                </label> <br>
+
+                <label>
+                    <input type="password" id="inp_senha" placeholder="Senha"> <br>
+                </label> <br>
+                
+                <button onclick="entrar()">Entrar</button> <br> <br>
+                
+                <span>Não tem cadastro? <a href="cadastro.html">Cadastrar-se</a></span>
             </div>
-            <div id="div_resultado"></div>
         </div>
+        <div id="div_resultado"></div>
     </div>
+
+    <script src="./js/sessao.js"></script>
+    <script src="./js/login.js"></script>
 </body>
 
 </html>
