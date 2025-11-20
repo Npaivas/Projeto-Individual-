@@ -10,8 +10,6 @@ body {
 
 .header {
     display: flex;
-    position: sticky;
-    top: 0;
     width: 100%;
     height: 80px;
     padding: 5px;
@@ -77,8 +75,8 @@ body {
     position: relative;
     width: 100%;
     height: 800px;
-    margin-top: 1px;
     overflow: hidden;
+    margin-top: 1px;
 }
 
 .poster-background {
@@ -91,8 +89,6 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
     object-fit: cover;
     z-index: 1;
 }
@@ -106,20 +102,7 @@ body {
     }
 
 .banner h1 {
-    font-size: 3.5em;
-    margin-bottom: 0.1em;
     color: #C5A445;
-}
-
-.banner h2 {
-    font-size: 2em;
-    margin-top: 0;
-    margin-bottom: 0.5em;
-}
-
-.banner p {
-    font-size: 1.2em;
-    font-weight: 300;
 }
 
 .main {
@@ -127,7 +110,7 @@ body {
     flex-direction: column;
     background-color: #0a0a0a;
     width: 100%;
-    padding: 0 20px;
+    padding: 20px;
 }
 
 .main h1 {
@@ -229,13 +212,11 @@ body {
     right: 25px;
     z-index: 2;
     color: white;
-    font-family: Arial;
 }
 
 .informacao-final h2 {
     margin: 0 0 3%;
     font-size: 28px;
-    font-weight: 700;
 }
 
 .informacao-final span {
@@ -244,14 +225,12 @@ body {
     border-radius: 20px;
     margin-bottom: 12px;
     font-size: 14px;
-    font-weight: bold;
     background: #7a00f5;
 }
 
 .informacao-final p {
     margin-top: 8px;
     font-size: 15px;
-    line-height: 1.4;
 }
 
 .Marcos {
@@ -278,7 +257,6 @@ body {
 }
 
 .Marcos-titulo {
-    font-weight: bold;
     margin-bottom: 10px;
     border-bottom: 1px solid #C5A445;
     color: #C5A445;
@@ -321,14 +299,12 @@ body {
 .Marcos-artilheiros p{
     margin-top: 8px;
     font-size: 20px;
-    font-weight: bold;
     color: #C5A445;
 }
 
 .Marcos-assistentes p {
     margin-top: 8px;
     font-size: 20px;
-    font-weight: bold;
     color: #C5A445;
 }
 

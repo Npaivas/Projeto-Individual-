@@ -181,7 +181,6 @@ body {
     margin: 10px 0;
     font-size: 14px;
     color: #ddd;
-    line-height: 1.5;
 }
 
 .geral-marcos {
@@ -214,8 +213,6 @@ body {
 
 .background-imagem {
     position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
     height: 25%;
     z-index: 1;
@@ -230,29 +227,23 @@ body {
     right: 25px;
     z-index: 2;
     color: white;
-    font-family: Arial;
 }
 
 .informacao-final h2 {
-    margin: 0 0 3%;
+    margin: 3%;
     font-size: 28px;
     font-weight: 700;
 }
 
 .informacao-final span {
-    display: inline-block;
-    padding: 6px 14px;
     border-radius: 20px;
     margin-bottom: 12px;
     font-size: 14px;
-    font-weight: bold;
     background: #7a00f5;
 }
 
 .informacao-final p {
     margin-top: 8px;
-    font-size: 15px;
-    line-height: 1.4;
 }
 
 .Marcos {

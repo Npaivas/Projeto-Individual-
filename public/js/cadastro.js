@@ -17,7 +17,7 @@ function cadastrar() {
         confrmSenhaVar == ""
     ) {
         alert("Preencha todos os campos corretamente");
-      //  finalizarAguardar();
+      // finalizarAguardar();
         return false;
     } else if(!emailFormatado.includes('@') ||!emailFormatado.includes('.') ){
         alert("Email/senha incoretos")
@@ -52,22 +52,22 @@ function cadastrar() {
             if (resposta.ok) {
                 div_aguardar.style.display = "block";
 
-                //mensagem_erro.innerHTML =
+                mensagem_erro.innerHTML =
                     alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
                 setTimeout(() => {
                     window.location = "login.html";
                 }, "2000");
 
-                limparFormulario();
-                finalizarAguardar();
+          //       limparFormulario();
+          //       finalizarAguardar();
             } else {
                 throw "Houve um erro ao tentar realizar o cadastro!";
             }
         })
         .catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-//            finalizarAguardar();
+     //    finalizarAguardar();
         });
 
     return;
