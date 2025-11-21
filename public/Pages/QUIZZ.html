@@ -70,7 +70,7 @@
 <script>
 const listaDeQuestoes = [
     {
-        pergunta: "Qual pais europeu sediou uma final da libertadores??",
+        pergunta: "Qual pais europeu sediou uma final da libertadores?",
         alternativaA: "Portugal",
         alternativaB: "Alemanha",
         alternativaC: "Espanha",
@@ -78,20 +78,36 @@ const listaDeQuestoes = [
         alternativaCorreta: "alternativaC"
     },
     {
-        pergunta: "Quantas horas tem em um dia?",
-        alternativaA: "30 horas",
-        alternativaB: "38 horas",
-        alternativaC: "48 horas",
-        alternativaD: "24 horas",
-        alternativaCorreta: "alternativaD"
+        pergunta: "Qual clube teve a gloria eterna mais vezes no seculo 21?",
+        alternativaA: "Palmeiras",
+        alternativaB: "Boca Juniors",
+        alternativaC: "Flamengo",
+        alternativaD: "São Paulo",
+        alternativaCorreta: "alternativaB"
     },
     {
-        pergunta: "Qual destes números é ímpar?",
-        alternativaA: "Dez",
-        alternativaB: "Doze",
-        alternativaC: "Oito",
-        alternativaD: "Onze",
-        alternativaCorreta: "alternativaD"
+        pergunta: "Qual jogador brasileiro com mais participações em gols na libertadores?",
+        alternativaA: "Luiz Fabiano",
+        alternativaB: "Gabigol",
+        alternativaC: "Neymar",
+        alternativaD: "Rony",
+        alternativaCorreta: "alternativaB"
+    },
+    {
+        pergunta: "Qual time teve mais vitorias na libertadores?",
+        alternativaA: "Boca Juniors",
+        alternativaB: "Flamengo",
+        alternativaC: "São Paulo",
+        alternativaD: "Palmeiras",
+        alternativaCorreta: "alternativaB"
+    },
+    {
+        pergunta: "Qual edição ficou marcada por escandalo de arbitragem?",
+        alternativaA: "2020",
+        alternativaB: "2002",
+        alternativaC: "2013",
+        alternativaD: "2015",
+        alternativaCorreta: "alternativaC"
     }
 ];
 
@@ -161,9 +177,11 @@ function avancar() {
     if (numeroDaQuestaoAtual < quantidadeDeQuestoes) {
         preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual);
     } else {
-        alert("Fim do quiz!");
-        btnSubmeter.disabled = true;
-        btnTentarNovamente.disabled = false;
+        // Quiz finalizado - mudar para próxima página
+        setTimeout(function() {
+            alert("Quiz finalizado! Sua pontuação: " + pontuacaoFinal + "/" + quantidadeDeQuestoes);
+            window.location.href = "dashboard.html"; // Mude para a página desejada
+        }, 500);
     }
 }
 
@@ -209,5 +227,4 @@ function checarResposta() {
 function tentarNovamente() {
     window.location.reload();
 }
-
 </script>

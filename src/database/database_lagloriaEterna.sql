@@ -1,33 +1,30 @@
-DROP DATABASE IF EXISTS individual;
-CREATE DATABASE individual;
-USE individual;
+drop database if exists La_Gloria_Eterna;
+create database La_Gloria_Eterna;
+use La_Gloria_Eterna;
 
-CREATE TABLE usuario(
-idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-nome VARCHAR(45) NOT NULL,
-email VARCHAR(45) UNIQUE,
-senha VARCHAR(45) NOT NULL
+create table usuario (
+idusuario int primary key auto_increment,
+nome varchar(45) not null,
+email varchar(45) not null unique,
+senha varchar(45) not null
 );
 
-SELECT * FROM usuario;
+create table quiz (
+idquiz int primary key auto_increment,
+nomequiz varchar(45) not null
+);
 
-CREATE TABLE quiz (
-    idQuiz int PRIMARY KEY AUTO_INCREMENT,
-    pergunta text,
-    opcaoA varchar(10),
-    opcaoB varchar(10),
-    opcaoC varchar(10),
-    opcaoD varchar(10),
-    resposta varchar(1)
-    );
-    
-CREATE TABLE respostaQuiz (
-    id INT,
-    fkUsuario INT NOT NULL,
-    fkPergunta INT NOT NULL,
-    respostaEscolhida VARCHAR(1),
-    respostaCorreta boolean,
-    constraint pkComposta primary key(id,fkUsuario,fkPergunta),
-    FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
-    FOREIGN KEY (fkPergunta) REFERENCES quiz(idQuiz)
+create table partida (
+idpartida int primary key auto_increment,
+pontuacao int not null,
+tmptotal int,
+dtpartida datetime default current_timestamp,
+fkusuario int not null,
+fkquiz int not null,
+constraint fk_partida_usuario
+	foreign key (fkusuario) 
+		references usuario(idusuario),
+    constraint fk_partida_quiz
+        foreign key (fkquiz) 
+			references quiz(idquiz)
 );

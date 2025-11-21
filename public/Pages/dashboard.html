@@ -14,6 +14,8 @@
     <script src="../js/sessao.js"></script>
 
     <script src="./../js/alerta.js"></script>
+    <script src="../js/dash.js"></script>
+
 
     <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -55,7 +57,7 @@
             <div class="kpi">
                 <div class="card-kpi">
                     <div class="referencia-kpi">Última Partida</div>
-                    <div class="kpi-valor">8/10</div>
+                    <div class="kpi-valor" id="kpi_ultima_partida">--</div>
                     <div class="kpi-descricao">pontos</div>
                 </div>
 
@@ -146,7 +148,9 @@
                 },
             }
         });
-    </script>
+        
+        </script>
 </body>
 
 </html>
+<script src="../js/dash.js"></script>
