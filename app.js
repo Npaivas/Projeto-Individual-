@@ -17,6 +17,11 @@ var app = express();
 
 var usuarioRouter = require("./src/routes/usuarios");
 
+var partidasRouter = require("./src/routes/partidaRoutes");
+app.use("/partidas", partidasRouter);
+
+app.use(express.static("public/Pages"));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));

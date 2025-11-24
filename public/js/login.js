@@ -29,20 +29,27 @@ function entrar() {
         })
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
-        alert("Registrado")
+        
         if (resposta.ok) {
             console.log(resposta);
 
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
+                
+                // ✅ CORREÇÃO: Salvar dados no sessionStorage
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.idUsuario;
 
+                console.log("Dados salvos no sessionStorage:");
+                console.log("ID_USUARIO:", sessionStorage.ID_USUARIO);
+                console.log("NOME_USUARIO:", sessionStorage.NOME_USUARIO);
+                console.log("EMAIL_USUARIO:", sessionStorage.EMAIL_USUARIO);
+
                 setTimeout(function () {
-                    window.location = "index.html";
-                }, 1000); // apenas para exibir o loading
+                    window.location = "dashboard.html"; // ✅ Mudar para dashboard
+                }, 1000);
 
             });
 
@@ -62,6 +69,7 @@ function entrar() {
 
     return false;
 }
+
 function sumirMensagem() {
     cardErro.style.display = "none"
 }

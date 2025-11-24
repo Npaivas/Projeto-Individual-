@@ -1,213 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz</title>
-    <link rel="stylesheet" href="../CSS/Quizz.css">
-</head>
+    <link rel="stylesheet" href="../CSS/Quizz.css" />
+    <script src="../js/sessao.js"></script>
+  </head>
 
+  <body onload="validarSessao(); iniciarQuiz()">
+    <div class="jogo">
+      <div class="main">
+        <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+          <div id="infoQuestao" class="padding-8">
+            <span
+              >Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de
+              <span id="qtdQuestoes"></span
+            ></span>
+          </div>
 
-<body onload="iniciarQuiz()">
-    <div id="Jogo" class="jogo">
-        <div class="main">        
-            
-            <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+          <div id="perguntaDaQuestaoAtual" class="padding-8">
+            <span id="spanQuestaoExibida" class="text-bold"></span>
+          </div>
 
-                <div id="infoQuestao" class="padding-8">
-                    <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-                        questões.</span>
-                </div>
+          <div id="infoAlternativas" class="padding-8">
+            <span><em>Escolha uma opção abaixo:</em></span>
+          </div>
 
-                <div id="perguntaDaQuestaoAtual" class="padding-8">
-                    <span id="spanQuestaoExibida" class="text-bold"></span>
-                </div>
+          <div id="opcoes" class="flex-colunar padding-8">
+            <label id="labelOpcaoUm"
+              ><input type="radio" name="option" value="alternativaA" />
+            </label>
+            <label id="labelOpcaoDois"
+              ><input type="radio" name="option" value="alternativaB" />
+            </label>
+            <label id="labelOpcaoTres"
+              ><input type="radio" name="option" value="alternativaC" />
+            </label>
+            <label id="labelOpcaoQuatro"
+              ><input type="radio" name="option" value="alternativaD" />
+            </label>
+          </div>
 
-                <div id="infoAlternativas" class="padding-8">
-                    <span><em>Escolha uma opção dentre as abaixo:</em></span>
-                </div>
-
-                <div id="opcoes" class="flex-colunar padding-8">
-                    <span>
-                        <input type="radio" id="primeiraOpcao" name="option" value="alternativaA" />
-                        <label for="primeiraOpcao" id="labelOpcaoUm"></label>
-                    </span>
-                    <span>
-                        <input type="radio" id="segundaOpcao" name="option" value="alternativaB" />
-                        <label for="segundaOpcao" id="labelOpcaoDois"></label>
-                    </span>
-                    <span>
-                        <input type="radio" id="terceiraOpcao" name="option" value="alternativaC" />
-                        <label for="terceiraOpcao" id="labelOpcaoTres"></label>
-                    </span>
-                    <span>
-                        <input type="radio" id="quartaOpcao" name="option" value="alternativaD" />
-                        <label for="quartaOpcao" id="labelOpcaoQuatro"></label>
-                    </span>
-                </div>
-
-                <div id="botoes" class="flex-colunar padding-8">
-                    <div class="btn-submeter">
-                        <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                    </div>
-                    <div class="btn-avancar">
-                        <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                    </div>
-                    <div class="btn-tentarDnv">
-                        <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-                    </div>
-                    
-                </div>
-
+          <div id="botoes" class="flex-colunar padding-8">
+            <div class="btn-submeter">
+              <button onclick="submeter()" id="btnSubmeter">Submeter</button>
             </div>
+            <div class="btn-avancar">
+              <button onclick="avancar()" id="btnProx" disabled>Próxima</button>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</body>
-
+  </body>
 </html>
+
 <script>
-const listaDeQuestoes = [
+  const listaDeQuestoes = [
     {
-        pergunta: "Qual pais europeu sediou uma final da libertadores??",
-        alternativaA: "Portugal",
-        alternativaB: "Alemanha",
-        alternativaC: "Espanha",
-        alternativaD: "França",
-        alternativaCorreta: "alternativaC"
+      pergunta: "Qual país europeu sediou uma final da Libertadores?",
+      alternativaA: "Portugal",
+      alternativaB: "Alemanha",
+      alternativaC: "Espanha",
+      alternativaD: "França",
+      alternativaCorreta: "alternativaC",
     },
     {
-        pergunta: "Quantas horas tem em um dia?",
-        alternativaA: "30 horas",
-        alternativaB: "38 horas",
-        alternativaC: "48 horas",
-        alternativaD: "24 horas",
-        alternativaCorreta: "alternativaD"
+      pergunta: "Qual clube venceu mais títulos no século 21?",
+      alternativaA: "Palmeiras",
+      alternativaB: "Boca Juniors",
+      alternativaC: "Flamengo",
+      alternativaD: "São Paulo",
+      alternativaCorreta: "alternativaB",
     },
     {
-        pergunta: "Qual destes números é ímpar?",
-        alternativaA: "Dez",
-        alternativaB: "Doze",
-        alternativaC: "Oito",
-        alternativaD: "Onze",
-        alternativaCorreta: "alternativaD"
-    }
-];
+      pergunta: "Qual jogador tem mais participações em gols na Libertadores?",
+      alternativaA: "Luiz Fabiano",
+      alternativaB: "Gabigol",
+      alternativaC: "Neymar",
+      alternativaD: "Rony",
+      alternativaCorreta: "alternativaB",
+    },
+    {
+      pergunta: "Qual time tem mais vitórias na história da Libertadores?",
+      alternativaA: "Boca Juniors",
+      alternativaB: "Flamengo",
+      alternativaC: "São Paulo",
+      alternativaD: "Palmeiras",
+      alternativaCorreta: "alternativaC",
+    },
+    {
+      pergunta: "Qual edição ficou marcada por escândalo de arbitragem?",
+      alternativaA: "2020",
+      alternativaB: "2002",
+      alternativaC: "2013",
+      alternativaD: "2015",
+      alternativaCorreta: "alternativaC",
+    },
+  ];
 
-// variáveis globais    
-let numeroDaQuestaoAtual = 0;
-let pontuacaoFinal = 0;
-let quantidadeDeQuestoes = listaDeQuestoes.length;
+  let numeroDaQuestaoAtual = 0;
+  let pontuacaoFinal = 0;
+  let quantidadeDeQuestoes = listaDeQuestoes.length;
 
-function iniciarQuiz() {
-    document.getElementById('jogo').style.display = "flex";
-    document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes;
-
+  function iniciarQuiz() {
+    document.getElementById("qtdQuestoes").innerHTML = quantidadeDeQuestoes;
     preencherHTMLcomQuestaoAtual(0);
+  }
 
-    btnSubmeter.disabled = false;
-    btnProx.disabled = true;
-    btnTentarNovamente.disabled = true;
-}
-
-function preencherHTMLcomQuestaoAtual(index) {
-    habilitarAlternativas(true);
-
-    const questaoAtual = listaDeQuestoes[index];
-    numeroDaQuestaoAtual = index;
-
+  function preencherHTMLcomQuestaoAtual(index) {
+    const q = listaDeQuestoes[index];
     document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = index + 1;
-    document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
+    document.getElementById("spanQuestaoExibida").innerHTML = q.pergunta;
 
-    document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
-    document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
-    document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
-    document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
-}
+    document.getElementById(
+      "labelOpcaoUm"
+    ).innerHTML = `<input type="radio" name="option" value="alternativaA"> ${q.alternativaA}`;
+    document.getElementById(
+      "labelOpcaoDois"
+    ).innerHTML = `<input type="radio" name="option" value="alternativaB"> ${q.alternativaB}`;
+    document.getElementById(
+      "labelOpcaoTres"
+    ).innerHTML = `<input type="radio" name="option" value="alternativaC"> ${q.alternativaC}`;
+    document.getElementById(
+      "labelOpcaoQuatro"
+    ).innerHTML = `<input type="radio" name="option" value="alternativaD"> ${q.alternativaD}`;
 
-function submeter() {
-    const options = document.getElementsByName("option");
+    document.getElementById("btnProx").disabled = true;
+    document.getElementById("btnSubmeter").disabled = false;
 
-    let hasChecked = [...options].some(o => o.checked);
-    if (!hasChecked) {
-        alert("Escolha uma opção!");
-        return;
+    const selecionada = document.querySelector("input[name='option']:checked");
+    if (selecionada) selecionada.checked = false;
+  }
+
+  function submeter() {
+    const selecionada = document.querySelector("input[name='option']:checked");
+
+    if (!selecionada) {
+      alert("Escolha uma opção!");
+      return;
     }
 
-    btnSubmeter.disabled = true;
-    btnProx.disabled = false;
+    const correta = listaDeQuestoes[numeroDaQuestaoAtual].alternativaCorreta;
 
-    habilitarAlternativas(false);
-    checarResposta();
-}
+    if (selecionada.value === correta) {
+      pontuacaoFinal++;
+    }
 
-function habilitarAlternativas(ativar) {
-    primeiraOpcao.disabled = !ativar;
-    segundaOpcao.disabled = !ativar;
-    terceiraOpcao.disabled = !ativar;
-    quartaOpcao.disabled = !ativar;
-}
+    document.getElementById("btnProx").disabled = false;
+    document.getElementById("btnSubmeter").disabled = true;
+  }
 
-function avancar() {
-    btnProx.disabled = true;
-    btnSubmeter.disabled = false;
-
-    desmarcarRadioButtons();
-    limparCoresBackgroundOpcoes();
-
+  function avancar() {
     numeroDaQuestaoAtual++;
 
     if (numeroDaQuestaoAtual < quantidadeDeQuestoes) {
-        preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual);
+      preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual);
     } else {
-        alert("Fim do quiz!");
-        btnSubmeter.disabled = true;
-        btnTentarNovamente.disabled = false;
+      finalizarQuiz();
     }
-}
+  }
 
-function desmarcarRadioButtons() {
-    const options = document.getElementsByName("option");
-    options.forEach(o => o.checked = false);
-}
+  function finalizarQuiz() {
+    const idUsuario = sessionStorage.ID_USUARIO;
 
-function limparCoresBackgroundOpcoes() {
-    const options = document.getElementsByName("option");
-    options.forEach(o => {
-        document.getElementById(o.labels[0].id).classList.remove("text-danger-with-bg");
-        document.getElementById(o.labels[0].id).classList.remove("text-success-with-bg");
-    });
-}
+    if (!idUsuario) {
+      alert("Faça login primeiro!");
+      window.location = "login.html";
+      return;
+    }
 
-function checarResposta() {
-    const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual];
-    const resposta = questaoAtual.alternativaCorreta;
+    // Tenta salvar a partida (se der erro, continua mesmo assim)
+    fetch("/partidas/registrar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fkUsuario: idUsuario,
+        fkQuiz: 1,
+        pontuacao: pontuacaoFinal,
+        tempo: 0,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Partida salva:", data);
+        redirecionar();
+      })
+      .catch((error) => {
+        console.log("Erro ao salvar, mas redirecionando mesmo assim");
+        redirecionar();
+      });
+  }
 
-    const options = document.getElementsByName("option");
-
-    let idAlternativaCorreta = null;
-
-    options.forEach(o => {
-        if (o.value === resposta) {
-            idAlternativaCorreta = o.labels[0].id;
-        }
-    });
-
-    options.forEach(o => {
-        if (o.checked && o.value === resposta) {
-            document.getElementById(idAlternativaCorreta).classList.add("text-success-with-bg");
-            pontuacaoFinal++;
-        } else if (o.checked && o.value !== resposta) {
-            const wrongId = o.labels[0].id;
-            document.getElementById(wrongId).classList.add("text-danger-with-bg");
-            document.getElementById(idAlternativaCorreta).classList.add("text-success-with-bg");
-        }
-    });
-}
-
-function tentarNovamente() {
-    window.location.reload();
-}
-
+  function redirecionar() {
+    alert(
+      "Quiz finalizado! Pontuação: " +
+        pontuacaoFinal +
+        "/" +
+        quantidadeDeQuestoes
+    );
+    window.location.href = "dashboard.html";
+  }
 </script>
