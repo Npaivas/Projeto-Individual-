@@ -4,23 +4,31 @@ use La_Gloria_Eterna;
 
 create table usuario (
 idusuario int primary key auto_increment,
-nome varchar(45) not null,
-email varchar(45) not null unique,
-senha varchar(45) not null
+nome varchar(45),
+email varchar(45) unique,
+senha varchar(45)
 );
+
+select * from usuario;
+
 
 create table quiz (
 idquiz int primary key auto_increment,
-nomequiz varchar(45) not null
+nomequiz varchar(45)
 );
+INSERT INTO quiz (nomequiz) VALUES 
+('Quiz Libertadores');
+
+select * from quiz;
+
 
 create table partida (
 idpartida int primary key auto_increment,
-pontuacao int not null,
+pontuacao int,
 tmptotal int,
 dtpartida datetime default current_timestamp,
-fkusuario int not null,
-fkquiz int not null,
+fkusuario int,
+fkquiz int,
 constraint fk_partida_usuario
 	foreign key (fkusuario) 
 		references usuario(idusuario),
