@@ -1,161 +1,87 @@
 var database = require("../database/config");
 
+// Registrar uma nova partida
 function registrarPartida(fkUsuario, fkQuiz, pontuacao, tempo) {
-  console.log("entrou no model: registrando partida");
-
-  var instrucao = `
-    INSERT INTO Partida (FkUsuario, FkQuiz, Pontuacao, Tempo)
-    VALUES (${fkUsuario}, ${fkQuiz}, ${pontuacao}, ${tempo});
-`;
-
-  return database.executar(instrucao);
-}
-
-function obterUltimaPartida(idUsuario) {
-  var instrucao = `
-        SELECT 
-            p.IdPartida AS id,
-            p.Pontuacao AS pontuacao,
-            p.Tempo AS tempo,
-            p.DataHora AS dataHora,
-            q.Titulo AS quiz
-        FROM Partida p
-        JOIN Quiz q ON p.FkQuiz = q.IdQuiz
-        WHERE p.FkUsuario = ${idUsuario}
-        ORDER BY p.DataHora DESC;
+    var instrucao = `
+        INSERT INTO partida (fkusuario, fkquiz, pontuacao, tmptotal, dtpartida)
+        VALUES (${fkUsuario}, ${fkQuiz}, ${pontuacao}, ${tempo}, NOW());
     `;
-
-  return database.executar(instrucao);
+    return database.executar(instrucao);
 }
 
-function obterMediaGeral() {
-
-  var instrucao = `
-        SELECT 
-            ROUND(AVG(Pontuacao), 2) AS media_pontuacao,
-            ROUND(AVG(Tempo), 2) AS media_tempo,
-            COUNT(IdPartida) AS total_partidas,
-            COUNT(DISTINCT FkUsuario) AS total_usuarios
-        FROM Partida;
+// Buscar a última partida do usuário
+function ultimaPartida(idUsuario) {
+    var instrucao = `
+        SELECT pontuacao as Pontuacao, tmptotal as TmpTotal, dtpartida as DtPartida
+        FROM partida
+        WHERE fkusuario = ${idUsuario}
+        ORDER BY idpartida DESC
+        LIMIT 1;
     `;
-
-  return database.executar(instrucao);
+    return database.executar(instrucao);
 }
 
-function obterGabaritaram(total) {
-
-  var instrucao = `
-        SELECT 
-        COUNT(DISTINCT FkUsuario) AS total_gabaritaram
-        FROM Partida 
-        WHERE Pontuacao >= ${total};
+// Média geral de pontuações
+function mediaPontuacao() {
+    var instrucao = `
+        SELECT AVG(pontuacao) AS media
+        FROM partida;
     `;
-
-  return database.executar(instrucao);
+    return database.executar(instrucao);
 }
 
-function obterTop3() {
-
-  var instrucao = `
+// Porcentagem de jogadores que gabaritaram
+function gabaritaram(total) {
+    var instrucao = `
         SELECT 
-            u.Nome AS nome,
-            MAX(p.Pontuacao) AS melhor_pontuacao,
-            MIN(p.Tempo) AS melhor_tempo
-        FROM Usuario u
-        JOIN Partida p ON p.FkUsuario = u.IdUsuario
-        GROUP BY u.IdUsuario, u.Nome
-        ORDER BY melhor_pontuacao DESC, melhor_tempo ASC;
+            (SELECT COUNT(*) FROM partida WHERE pontuacao = ${total}) /
+            (SELECT COUNT(*) FROM partida) * 100 AS porcentagem;
     `;
-
-  return database.executar(instrucao);
+    return database.executar(instrucao);
 }
 
-function obterRanking() {
-
-  var instrucao = `
-    SELECT 
-        u.Nome AS nome,
-        MAX(p.Pontuacao) AS melhor_pontuacao,
-        COUNT(p.IdPartida) AS total_partidas
-    FROM Usuario u
-    JOIN Partida p ON p.FkUsuario = u.IdUsuario
-    GROUP BY u.IdUsuario, u.Nome
-    ORDER BY melhor_pontuacao DESC;
-`;
-
-  return database.executar(instrucao);
-}
-
-function obterDistribuicao() {
-  console.log("entrou no model: obtendo distribuição");
-
-  var instrucao = `
-        SELECT 
-            CASE 
-                WHEN Pontuacao >= 90 THEN '90-100'
-                WHEN Pontuacao >= 80 THEN '80-89'
-                WHEN Pontuacao >= 70 THEN '70-79'
-                WHEN Pontuacao >= 60 THEN '60-69'
-                WHEN Pontuacao >= 50 THEN '50-59'
-                ELSE '0-49'
-            END AS faixa_pontuacao,
-            COUNT(*) AS quantidade
-        FROM Partida
-        GROUP BY faixa_pontuacao
-        ORDER BY faixa_pontuacao DESC;
+// Top 3 jogadores com melhor pontuação
+function top3() {
+    var instrucao = `
+        SELECT u.nome AS nome, MAX(p.pontuacao) AS melhor
+        FROM usuario u
+        JOIN partida p ON p.fkusuario = u.idusuario
+        GROUP BY u.idusuario
+        ORDER BY melhor DESC
+        LIMIT 3;
     `;
-
-  return database.executar(instrucao);
+    return database.executar(instrucao);
 }
 
-function obterEstatisticasUsuario(idUsuario) {
-  console.log("entrou no model: obtendo estatísticas do usuário");
-
-  var instrucao = `
-        SELECT 
-            u.Nome AS nome,
-            COUNT(p.IdPartida) AS total_partidas,
-            MAX(p.Pontuacao) AS melhor_pontuacao,
-            ROUND(AVG(p.Pontuacao), 2) AS media_pontuacao,
-            MIN(p.Tempo) AS melhor_tempo,
-            ROUND(AVG(p.Tempo), 2) AS media_tempo,
-            MAX(p.DataHora) AS ultima_partida
-        FROM Usuario u
-        LEFT JOIN Partida p ON p.FkUsuario = u.IdUsuario
-        WHERE u.IdUsuario = ${idUsuario}
-        GROUP BY u.IdUsuario, u.Nome;
+// Ranking completo (melhor pontuação por usuário)
+function ranking() {
+    var instrucao = `
+        SELECT u.nome AS nome, MAX(p.pontuacao) AS melhor
+        FROM usuario u
+        JOIN partida p ON p.fkusuario = u.idusuario
+        GROUP BY u.idusuario
+        ORDER BY melhor DESC;
     `;
-
-  return database.executar(instrucao);
+    return database.executar(instrucao);
 }
 
-function obterHistoricoUsuario(idUsuario, limite = 10) {
-  console.log("entrou no model: obtendo histórico do usuário");
-
-var instrucao = `
-    SELECT 
-        p.IdPartida AS id,
-        p.Pontuacao AS pontuacao,
-        p.Tempo AS tempo,
-        p.DataHora AS dataHora,
-        q.Titulo AS quiz
-    FROM Partida p
-    JOIN Quiz q ON p.FkQuiz = q.IdQuiz
-    WHERE p.FkUsuario = ${idUsuario}
-    ORDER BY p.DataHora DESC;
-`;
-
-  return database.executar(instrucao);
+// Distribuição de pontuações para o gráfico
+function distribuicao() {
+    var instrucao = `
+        SELECT
+            (SELECT COUNT(*) FROM partida WHERE pontuacao <= 5) AS faixa_0_5,
+            (SELECT COUNT(*) FROM partida WHERE pontuacao BETWEEN 6 AND 8) AS faixa_6_8,
+            (SELECT COUNT(*) FROM partida WHERE pontuacao BETWEEN 9 AND 10) AS faixa_9_10;
+    `;
+    return database.executar(instrucao);
 }
 
 module.exports = {
-  registrarPartida,
-  obterUltimaPartida,
-  obterMediaGeral,
-  obterGabaritaram,
-  obterTop3,
-  obterRanking,
-  obterDistribuicao,
-  obterEstatisticasUsuario,
-  obterHistoricoUsuario,
+    registrarPartida,
+    ultimaPartida,
+    mediaPontuacao,
+    gabaritaram,
+    top3,
+    ranking,
+    distribuicao
 };

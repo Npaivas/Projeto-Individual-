@@ -1,4 +1,3 @@
-/*função de login*/
 function entrar() {
     aguardar();
 
@@ -37,7 +36,6 @@ function entrar() {
                 console.log(json);
                 console.log(JSON.stringify(json));
                 
-                // ✅ CORREÇÃO: Salvar dados no sessionStorage
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.idUsuario;
@@ -48,7 +46,7 @@ function entrar() {
                 console.log("EMAIL_USUARIO:", sessionStorage.EMAIL_USUARIO);
 
                 setTimeout(function () {
-                    window.location = "dashboard.html"; // ✅ Mudar para dashboard
+                    window.location = "index.html"; 
                 }, 1000);
 
             });

@@ -1,4 +1,3 @@
- /*função de cadastro*/
 function cadastrar() {
     // aguardar();
 
@@ -39,8 +38,6 @@ function cadastrar() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
             nomeServer: nomeVar,
             emailServer: emailFormatado,
             senhaServer: senhaVar,
@@ -59,7 +56,6 @@ function cadastrar() {
                     window.location = "login.html";
                 }, "2000");
 
-          //       limparFormulario();
           //       finalizarAguardar();
             } else {
                 throw "Houve um erro ao tentar realizar o cadastro!";

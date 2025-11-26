@@ -13,22 +13,22 @@
 
 <body onload="carregarDashboard()">
 
-<!-- ADICIONE ESTES DOIS ELEMENTOS -->
-<div id="div_aguardar" style="display: none;">Carregando...</div>
-<div id="div_erros_login" style="display: none;"></div>
-
 <div class="janela">
     <div class="header-left">
         <h1>Dashboard</h1>
         <div class="hello">
             <h3>Olá, <span id="b_usuario"></span>!</h3>
         </div>
-        <div class="btn-refazer" onclick="window.location.href='QUIZZ.html'">
-            <h3>Refazer Quiz</h3>
-        </div>
-        <div class="btn-voltar" onclick="limparSessao()">
-            <h3>Sair</h3>
-        </div>
+        <a href="./QUIZZ.html">
+            <div class="btn-refazer">
+                <h3>Refazer Quiz</h3>
+            </div>
+        </a>
+        <a href="../index.html">
+            <div class="btn-voltar">
+                <h3>Sair</h3>
+            </div>
+        </a>
     </div>
 
     <div class="dash">

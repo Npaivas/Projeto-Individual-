@@ -8,17 +8,17 @@ body {
     width: 100%;
 }
 
+
 .header {
     display: flex;
-    position: sticky;
-    top: 0;
+    position: absolute;
     width: 100%;
     height: 80px;
     padding: 5px;
     align-items: center;
     justify-content: space-between;
     background-color: #000;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .logo-titulo-container {
@@ -28,7 +28,6 @@ body {
 }
 
 .header h1 {
-    margin: 0;
     color: #C5A445;
 }
 
@@ -42,7 +41,7 @@ body {
     margin-left: 10px;
 }
 
-.logo-corinthians img{
+.logo-corinthians img {
     height: 60px;
     width: auto;
 }
@@ -50,6 +49,7 @@ body {
     height: 60px;
     width: auto;
 }
+
 .logo-galo img {
     height: 60px;
     width: auto;
@@ -60,17 +60,25 @@ body {
     gap: 20px;
 }
 
-.usuario-icone {
+.botao-acessar {
     display: flex;
     height: 100%;
     align-items: center;
-    border-left: 1px solid #C5A445;
+    border-left: 1px solid white;
+    gap: 15px;
+    padding-left: 15px;
+    margin-right: 10px;
 }
 
-.usuario-icone img {
-    height: 80%;
-    margin-left: 15px;
-    margin-right: 10px;
+.btn-acessar{
+    padding: 10px 20px;
+    border: 2px solid #C5A445;
+    border-radius: 25px;
+    background-color: transparent;
+    color: #C5A445;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
 }
 
 .bloco-poster {
@@ -262,7 +270,7 @@ body {
     height: 280px;
     padding: 15px;
     border-radius: 15px;
-    box-shadow: 8px 2px 2px #C5A445;
+    box-shadow: 8px 10px 40px #C5A445;
     background-color: #1a1a1a;
     color: #C5A445;
     position: relative;
