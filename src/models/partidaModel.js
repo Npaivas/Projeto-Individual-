@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-// Registrar uma nova partida
+
 function registrarPartida(fkUsuario, fkQuiz, pontuacao, tempo) {
     var instrucao = `
         INSERT INTO partida (fkusuario, fkquiz, pontuacao, tmptotal, dtpartida)
@@ -9,7 +9,6 @@ function registrarPartida(fkUsuario, fkQuiz, pontuacao, tempo) {
     return database.executar(instrucao);
 }
 
-// Buscar a última partida do usuário
 function ultimaPartida(idUsuario) {
     var instrucao = `
         SELECT pontuacao as Pontuacao, tmptotal as TmpTotal, dtpartida as DtPartida
@@ -21,7 +20,6 @@ function ultimaPartida(idUsuario) {
     return database.executar(instrucao);
 }
 
-// Média geral de pontuações
 function mediaPontuacao() {
     var instrucao = `
         SELECT AVG(pontuacao) AS media
@@ -30,7 +28,6 @@ function mediaPontuacao() {
     return database.executar(instrucao);
 }
 
-// Porcentagem de jogadores que gabaritaram
 function gabaritaram(total) {
     var instrucao = `
         SELECT 
@@ -40,7 +37,6 @@ function gabaritaram(total) {
     return database.executar(instrucao);
 }
 
-// Top 3 jogadores com melhor pontuação
 function top3() {
     var instrucao = `
         SELECT u.nome AS nome, MAX(p.pontuacao) AS melhor
@@ -53,7 +49,6 @@ function top3() {
     return database.executar(instrucao);
 }
 
-// Ranking completo (melhor pontuação por usuário)
 function ranking() {
     var instrucao = `
         SELECT u.nome AS nome, MAX(p.pontuacao) AS melhor
@@ -65,7 +60,6 @@ function ranking() {
     return database.executar(instrucao);
 }
 
-// Distribuição de pontuações para o gráfico
 function distribuicao() {
     var instrucao = `
         SELECT
