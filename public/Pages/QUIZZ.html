@@ -46,130 +46,170 @@
 
 
 </html>
-    <script>
-        const listaDeQuestoes = [{
-                pergunta: "Qual país europeu sediou uma final da Libertadores?",
-                alternativaA: "Portugal",
-                alternativaB: "Alemanha",
-                alternativaC: "Espanha",
-                alternativaD: "França",
-                alternativaCorreta: "alternativaC"
-            },
-            {
-                pergunta: "Qual clube venceu mais títulos no século 21?",
-                alternativaA: "Palmeiras",
-                alternativaB: "Boca Juniors",
-                alternativaC: "Flamengo",
-                alternativaD: "São Paulo",
-                alternativaCorreta: "alternativaB"
-            },
-            {
-                pergunta: "Qual jogador tem mais participações em gols na Libertadores?",
-                alternativaA: "Luiz Fabiano",
-                alternativaB: "Gabigol",
-                alternativaC: "Neymar",
-                alternativaD: "Rony",
-                alternativaCorreta: "alternativaB"
-            },
-            {
-                pergunta: "Qual time tem mais vitórias na história da Libertadores?",
-                alternativaA: "Boca Juniors",
-                alternativaB: "Flamengo",
-                alternativaC: "São Paulo",
-                alternativaD: "Palmeiras",
-                alternativaCorreta: "alternativaC"
-            },
-            {
-                pergunta: "Qual edição ficou marcada por escândalo de arbitragem?",
-                alternativaA: "2020",
-                alternativaB: "2002",
-                alternativaC: "2013",
-                alternativaD: "2015",
-                alternativaCorreta: "alternativaC"
-            }
-        ];
+<script>
+    const listaDeQuestoes = [{
+            pergunta: "Qual país europeu sediou uma final da Libertadores?",
+            alternativaA: "Portugal",
+            alternativaB: "Alemanha",
+            alternativaC: "Espanha",
+            alternativaD: "França",
+            alternativaCorreta: "alternativaC"
+        },
+        {
+            pergunta: "Qual clube venceu mais títulos no século 21?",
+            alternativaA: "Palmeiras",
+            alternativaB: "Boca Juniors",
+            alternativaC: "Flamengo",
+            alternativaD: "São Paulo",
+            alternativaCorreta: "alternativaB"
+        },
+        {
+            pergunta: "Qual jogador tem mais participações em gols na Libertadores?",
+            alternativaA: "Luiz Fabiano",
+            alternativaB: "Gabigol",
+            alternativaC: "Neymar",
+            alternativaD: "Rony",
+            alternativaCorreta: "alternativaB"
+        },
+        {
+            pergunta: "Qual time tem mais vitórias na história da Libertadores?",
+            alternativaA: "Boca Juniors",
+            alternativaB: "São Paulo",
+            alternativaC: "River Plate",
+            alternativaD: "Palmeiras",
+            alternativaCorreta: "alternativaC"
+        },
+        {
+            pergunta: "Qual edição ficou marcada por escândalo de arbitragem?",
+            alternativaA: "2020",
+            alternativaB: "2002",
+            alternativaC: "2013",
+            alternativaD: "2015",
+            alternativaCorreta: "alternativaC"
+        },
+          {
+        pergunta: "Qual foi o primeiro clube brasileiro a vencer 3 Libertadores ?",
+        alternativaA: "Santos",
+        alternativaB: "São Paulo",
+        alternativaC: "Corinthians",
+        alternativaD: "Grêmio",
+        alternativaCorreta: "alternativaB"
+    },
+    {
+        pergunta: "Apartir de qual ano a final da Libertadores passou a ser disputada em jogo único?",
+        alternativaA: "2019",
+        alternativaB: "2017",
+        alternativaC: "2015",
+        alternativaD: "2021",
+        alternativaCorreta: "alternativaA"
+    },
+    {
+        pergunta: "Qual jogador foi artilheiro da Libertadores em 2021?",
+        alternativaA: "Gabriel Barbosa",
+        alternativaB: "Rafael Borré",
+        alternativaC: "Julio Furch",
+        alternativaD: "Hulk",
+        alternativaCorreta: "alternativaA"
+    },
+    {
+        pergunta: "Qual time chegou a 3 finais consecutivas?",
+        alternativaA: "River Plate",
+        alternativaB: "Flamengo",
+        alternativaC: "Palmeiras",
+        alternativaD: "Boca Juniors",
+        alternativaCorreta: "alternativaA"
+    },
+    {
+        pergunta: "Em qual ano o torneio começou a ter 32 times participantes?",
+        alternativaA: "1970",
+        alternativaB: "1998",
+        alternativaC: "1966",
+        alternativaD: "2000",
+        alternativaCorreta: "alternativaD"
+    }
+    ];
 
-        let numeroDaQuestaoAtual = 0;
-        let pontuacaoFinal = 0;
-        let quantidadeDeQuestoes = listaDeQuestoes.length;
+    let numeroDaQuestaoAtual = 0;
+    let pontuacaoFinal = 0;
+    let quantidadeDeQuestoes = listaDeQuestoes.length;
 
-        function iniciarQuiz() {
-            document.getElementById("qtdQuestoes").innerHTML = quantidadeDeQuestoes;
-            preencherHTMLcomQuestaoAtual(0);
+    function iniciarQuiz() {
+        document.getElementById("qtdQuestoes").innerHTML = quantidadeDeQuestoes;
+        preencherHTMLcomQuestaoAtual(0);
+    }
+
+    function preencherHTMLcomQuestaoAtual(index) {
+        const q = listaDeQuestoes[index];
+        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = index + 1;
+        document.getElementById("spanQuestaoExibida").innerHTML = q.pergunta;
+
+        document.getElementById("labelOpcaoUm").innerHTML =
+            `<input type="radio" name="option" value="alternativaA"> ${q.alternativaA}`;
+        document.getElementById("labelOpcaoDois").innerHTML =
+            `<input type="radio" name="option" value="alternativaB"> ${q.alternativaB}`;
+        document.getElementById("labelOpcaoTres").innerHTML =
+            `<input type="radio" name="option" value="alternativaC"> ${q.alternativaC}`;
+        document.getElementById("labelOpcaoQuatro").innerHTML =
+            `<input type="radio" name="option" value="alternativaD"> ${q.alternativaD}`;
+    }
+
+    function submeter() {
+        const selecionada = document.querySelector("input[name='option']:checked");
+
+        if (!selecionada) return alert("Escolha uma opção!");
+
+        const correta = listaDeQuestoes[numeroDaQuestaoAtual].alternativaCorreta;
+
+        if (selecionada.value === correta) pontuacaoFinal++;
+
+        document.getElementById("btnProx").disabled = false;
+        document.getElementById("btnSubmeter").disabled = true;
+    }
+
+    function avancar() {
+        numeroDaQuestaoAtual++;
+
+        if (numeroDaQuestaoAtual < quantidadeDeQuestoes) {
+            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual);
+            document.getElementById("btnProx").disabled = true;
+            document.getElementById("btnSubmeter").disabled = false;
+
+            const marcada = document.querySelector("input[name='option']:checked");
+            if (marcada) marcada.checked = false;
+
+        } else {
+            registrarPartida();
+        }
+    }
+
+    function registrarPartida() {
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        if (!idUsuario) {
+            alert("Erro: Usuário não identificado!");
+            return;
         }
 
-        function preencherHTMLcomQuestaoAtual(index) {
-            const q = listaDeQuestoes[index];
-            document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = index + 1;
-            document.getElementById("spanQuestaoExibida").innerHTML = q.pergunta;
-
-            document.getElementById("labelOpcaoUm").innerHTML =
-                `<input type="radio" name="option" value="alternativaA"> ${q.alternativaA}`;
-            document.getElementById("labelOpcaoDois").innerHTML =
-                `<input type="radio" name="option" value="alternativaB"> ${q.alternativaB}`;
-            document.getElementById("labelOpcaoTres").innerHTML =
-                `<input type="radio" name="option" value="alternativaC"> ${q.alternativaC}`;
-            document.getElementById("labelOpcaoQuatro").innerHTML =
-                `<input type="radio" name="option" value="alternativaD"> ${q.alternativaD}`;
-        }
-
-        function submeter() {
-            const selecionada = document.querySelector("input[name='option']:checked");
-
-            if (!selecionada) return alert("Escolha uma opção!");
-
-            const correta = listaDeQuestoes[numeroDaQuestaoAtual].alternativaCorreta;
-
-            if (selecionada.value === correta) pontuacaoFinal++;
-
-            document.getElementById("btnProx").disabled = false;
-            document.getElementById("btnSubmeter").disabled = true;
-        }
-
-        function avancar() {
-            numeroDaQuestaoAtual++;
-
-            if (numeroDaQuestaoAtual < quantidadeDeQuestoes) {
-                preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual);
-                document.getElementById("btnProx").disabled = true;
-                document.getElementById("btnSubmeter").disabled = false;
-
-                const marcada = document.querySelector("input[name='option']:checked");
-                if (marcada) marcada.checked = false;
-
-            } else {
-                registrarPartida();
-            }
-        }
-
-        function registrarPartida() {
-            const idUsuario = sessionStorage.ID_USUARIO;
-
-            if (!idUsuario) {
-                alert("Erro: Usuário não identificado!");
-                return;
-            }
-
-            fetch("/partidas/registrar", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        fkUsuario: idUsuario,
-                        fkQuiz: 1,
-                        pontuacao: pontuacaoFinal,
-                        tempo: 0
-                    })
+        fetch("/partidas/registrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fkUsuario: idUsuario,
+                    fkQuiz: 1,
+                    pontuacao: pontuacaoFinal,
+                    tempo: 0
                 })
-                .then(r => {
-                    if (!r.ok) throw "Erro ao registrar partida";
-                    alert(`Quiz finalizado!\nSua pontuação: ${pontuacaoFinal}/${quantidadeDeQuestoes}`);
-                    window.location.href = "dashboard.html";
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert("Erro ao salvar a partida.");
-                });
-        }
-    </script>
+            })
+            .then(r => {
+                if (!r.ok) throw "Erro ao registrar partida";
+                alert(`Quiz finalizado!\nSua pontuação: ${pontuacaoFinal}/${quantidadeDeQuestoes}`);
+                window.location.href = "dashboard.html";
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Erro ao salvar a partida.");
+            });
+    }
+</script>

@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/cadastro.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/cadastro.css" />
     <script src="./js/cadastro.js"></script>
-    <script src="./js/sessao.js" ></script>
+    <script src="./js/sessao.js"></script>
     <title>Cadastro</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="main">
-        <div class="imagem">
-        </div>
-        <div class="conteudo">
-            <div class="content">
-                <div class="credencial">
-                    <div class="texto">
-                        <span>Cadastre-se</span>
-                    </div>
-                    <label>
-                        <input type="text" id="inp_nome" placeholder="Nome" >
-                    </label> <br>
-
-                    <label>
-                        <input type="text" id="inp_email" placeholder="Email" ">
-                    </label><br>
-
-                    <label>
-                        <input type="password" id="inp_senha" placeholder="Senha" >
-                    </label> <br>
-
-                    <label>
-                        <input type="password" id="inp_confrmSenha" placeholder="Confirme a senha" >
-                    </label> <br>
-                    
-                    <button onclick="cadastrar()">Cadastrar</button> <br> <br>
-                    <span>Já é cadastrado? faça o <a href="login.html">Login</a></span>
-        
-                    <div id="div_aguardar" class="aguarde">
-                        <img src="./assets/img/aguarde-pink2.gif" id="loading-gif" />
-                    </div>
-                
-                </div>
+      <div class="imagem"></div>
+      <div class="conteudo">
+        <div class="content">
+          <div class="credencial">
+            <div class="texto">
+              <span style="color: green">Cadastre-se</span>
             </div>
-            <div id="div_resultado"></div>
-            <div id="mensagem_erro" ></div>
+            <div id="mensagem_erro"></div>
+            <label>
+              <input type="text" id="inp_nome" placeholder="Nome" />
+            </label>
+            <br />
 
+            <label>
+              <input type="text" id="inp_email" placeholder="Email" "> </label
+            ><br />
 
+            <label>
+              <input type=" password" id="inp_senha" placeholder="Senha" />
+            </label>
+            <br />
+
+            <label>
+              <input
+                type="password"
+                id="inp_confrmSenha"
+                placeholder="Confirme a senha"
+              />
+            </label>
+            <br />
+
+            <button onclick="cadastrar()">Cadastrar</button> <br />
+            <br />
+            <span>Já é cadastrado? faça o <a href="login.html">Login</a></span>
+
+            <div id="div_aguardar" class="aguarde">
+              <img src="./assets/img/aguarde-pink2.gif" id="loading-gif" />
+            </div>
+          </div>
         </div>
+        <div id="div_resultado"></div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
